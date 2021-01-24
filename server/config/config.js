@@ -13,6 +13,24 @@ process.env.PORT = process.env.PORT || 3000;
 process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
 
 //==========================
+// Vencimiemto del token
+// 60 segundos
+// 60 minutos
+// 24 horas
+// 30 minutos
+//==========================
+
+process.env.CADUCIDAD_TOKEN = 60 * 60 * 24 * 30;
+
+
+//==========================
+// SEED de autentificacion
+// Será una variable de entorno de Heroku
+//==========================
+
+process.env.SEED = process.env.SEED || 'este-es-el-seed-de-desarrollo';
+
+//==========================
 // Base de datos
 //==========================
 
