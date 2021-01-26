@@ -11,7 +11,7 @@ const _ = require('underscore');
 app.get('/usuario', verificaToken, function(req, res) {
 
     // Podemos obtener información suministrada por el token del peticionario
-    console.log(req.usuario);
+    // console.log(req.usuario);
     let desde = req.query.desde || 0;
     desde = Number(desde);
 

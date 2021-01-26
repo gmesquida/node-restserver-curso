@@ -1,16 +1,15 @@
-
 const jwt = require('jsonwebtoken');
 
 // ===============================
 // Verifir Token
 // ===============================
 
-let verificaToken = (req, res, next)=>{
+let verificaToken = (req, res, next) => {
 
     let token = req.get('token');
 
-    jwt.verify(token, process.env.SEED, (err, decoded)=>{
-        if (err){
+    jwt.verify(token, process.env.SEED, (err, decoded) => {
+        if (err) {
             return res.status(401).json({
                 ok: false,
                 err
@@ -19,7 +18,7 @@ let verificaToken = (req, res, next)=>{
 
         // Añadimos la información del usuario al request
         req.usuario = decoded.usuario;
- 
+
         next();
     })
 
@@ -31,15 +30,15 @@ let verificaToken = (req, res, next)=>{
 // Verifir AdminRole
 // ===============================
 
-let verificaAdmin_Role = (req, res, next)=>{
-    
-    let usuario = req.usuario;
-    console.log(usuario.role);
+let verificaAdmin_Role = (req, res, next) => {
 
-    if (usuario.role !== 'ADMIN_ROLE'){
+    let usuario = req.usuario;
+    // console.log(usuario.role);
+
+    if (usuario.role !== 'ADMIN_ROLE') {
         return res.status(401).json({
             ok: false,
-            err: {message:'El usuario no es administrador'}
+            err: { message: 'El usuario no es administrador' }
         })
     }
 
