@@ -27,6 +27,30 @@ let verificaToken = (req, res, next) => {
 };
 
 // ===============================
+// Verifir Token para la imagen ya que viene en la URL
+// ===============================
+
+let verificaTokenImg = (req, res, next) => {
+
+    let token = req.query.token;
+
+    jwt.verify(token, process.env.SEED, (err, decoded) => {
+        if (err) {
+            return res.status(401).json({
+                ok: false,
+                err
+            })
+        }
+
+        // Añadimos la información del usuario al request
+        req.usuario = decoded.usuario;
+
+        next();
+    })
+
+};
+
+// ===============================
 // Verifir AdminRole
 // ===============================
 
@@ -47,7 +71,9 @@ let verificaAdmin_Role = (req, res, next) => {
 };
 
 
+
 module.exports = {
     verificaToken,
-    verificaAdmin_Role
+    verificaAdmin_Role,
+    verificaTokenImg
 }

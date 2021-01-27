@@ -134,7 +134,8 @@ app.post('/producto', verificaToken, (req, res) => {
         precioUni: body.precioUni,
         disponible: body.disponible,
         categoria: body.categoria,
-        usuario: req.usuario._id
+        usuario: req.usuario._id,
+        img: ''
     })
 
     producto.save((err, productoDB) => {
